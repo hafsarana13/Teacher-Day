@@ -1,0 +1,142 @@
+<>
+        /* Custom Scrapbook & Classroom CSS styling */
+        body {
+            background-color: #F9F5EA;
+            background-image: radial-gradient(#D3C9B5 0.8px, transparent 0.8px);
+            background-size: 20px 20px;
+            color: #4A3A2C;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Chalkboard Texture */
+        .chalkboard-bg {
+            background-color: #2B3829;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+            background-size: 12px 12px;
+            border: 8px solid #6B3E26;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        /* Washi Tape Strips */
+        .washi-tape {
+            position: absolute;
+            height: 24px;
+            background: rgba(243, 237, 224, 0.85);
+            backdrop-filter: blur(1px);
+            border: 1px dashed rgba(140, 90, 65, 0.3);
+            z-index: 15;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tape-center {
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-1deg);
+            width: 100px;
+        }
+
+        .tape-left {
+            top: -10px;
+            left: 20px;
+            transform: rotate(-5deg);
+            width: 80px;
+        }
+
+        .tape-right {
+            top: -10px;
+            right: 20px;
+            transform: rotate(4deg);
+            width: 80px;
+        }
+
+        /* Polaroid Photo Style */
+        .polaroid-card {
+            background: #FFFFFF;
+            padding: 12px 12px 28px 12px;
+            box-shadow: 0 8px 20px rgba(74, 58, 44, 0.12), 0 2px 6px rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid #E5DEC9;
+        }
+
+        .polaroid-card:hover {
+            transform: translateY(-8px) scale(1.02) rotate(0deg) !important;
+            box-shadow: 0 16px 30px rgba(74, 58, 44, 0.2);
+            z-index: 25;
+        }
+
+        /* Paper Card Effect */
+        .paper-sheet {
+            background-color: #F3EDE0;
+            border: 1px solid #E2D7C3;
+            box-shadow: 0 8px 20px rgba(80, 60, 40, 0.08);
+            position: relative;
+        }
+
+        /* Clipboard Style */
+        .clipboard-board {
+            background: linear-gradient(135deg, #D2A87A 0%, #B38656 100%);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(60, 40, 20, 0.25);
+            padding: 24px 16px 20px 16px;
+            position: relative;
+        }
+
+        .clipboard-clip {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 32px;
+            background: linear-gradient(180deg, #A8A8A8 0%, #686868 100%);
+            border-radius: 6px 6px 0 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .clipboard-clip-inner {
+            width: 60px;
+            height: 12px;
+            background: #444;
+            margin: 6px auto 0 auto;
+            border-radius: 3px;
+        }
+
+        /* Wax Seal Badge */
+        .wax-seal-btn {
+            background: radial-gradient(circle at 30% 30%, #a83a3a, #731e1e);
+            color: #F9F5EA;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 6px 14px rgba(100, 20, 20, 0.35);
+            border: 2px dashed rgba(255, 255, 255, 0.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wax-seal-btn:hover {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5), 0 8px 20px rgba(100, 20, 20, 0.45);
+        }
+
+        /* Custom Floating Animation */
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(1.5deg); }
+        }
+        .animate-float {
+            animation: gentleFloat 4.5s ease-in-out infinite;
+        }
+
+        /* Scroll Reveal Utility */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+   

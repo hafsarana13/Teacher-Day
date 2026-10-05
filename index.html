@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teacher's Day</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Caveat (handwriting), Playfair Display (headings), Cormorant Garamond, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        creamBg: '#F9F5EA',
+                        paperBg: '#F3EDE0',
+                        sageGreen: '#4A6043',
+                        deepSage: '#3A4F35',
+                        lightSage: '#789270',
+                        terracotta: '#8C5A41',
+                        rustBrown: '#6B3E26',
+                        dustyRose: '#E8B4B8',
+                        blushPink: '#DF9B9B',
+                        softPinkBg: '#F7D6D8',
+                        chalkboard: '#2B3829',
+                        kraftPaper: '#E2CAAC',
+                        kraftDark: '#CBAC8B',
+                        clipboardWood: '#D2A87A',
+                        waxRed: '#8C2B2B'
+                    },
+                    fontFamily: {
+                        handwriting: ['Caveat', 'cursive'],
+                        serifHeading: ['Playfair Display', 'Cormorant Garamond', 'serif'],
+                        sansBody: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    
+</head>
+<body class="relative min-h-screen antialiased text-[#4A3A2C]">
+
+    <!-- AUDIO CONTROLLER (Web Audio Piano Synth) -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="musicToggleBtn" onclick="toggleMusic()" class="bg-[#4A6043] text-[#F9F5EA] px-4 py-2.5 rounded-full shadow-lg hover:bg-[#3A4F35] transition-all duration-300 flex items-center gap-2 text-xs md:text-sm font-semibold border border-[#789270]/40 group">
+            <i id="musicIcon" class="fa-solid fa-music text-amber-200 group-hover:scale-110 transition-transform"></i>
+            <span id="musicStatusText">Background Music: OFF</span>
+        </button>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-[#F9F5EA]/90 backdrop-blur-md border-b border-[#8C5A41]/15">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+            <!-- Top Logo strictly displaying ONLY "Happy Teacher's Day" -->
+            <a href="#hero" class="font-handwriting text-2xl md:text-3xl font-bold text-[#4A6043] tracking-wide flex items-center gap-2">
+                <span>Happy Teacher's Day</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6 text-xs lg:text-sm font-medium text-[#6B3E26]">
+                <a href="#hero" class="hover:text-[#4A6043] transition-colors">Classroom</a>
+                <a href="#teachers" class="hover:text-[#4A6043] transition-colors">Dedication</a>
+                <a href="#gallery" class="hover:text-[#4A6043] transition-colors">Memories</a>
+                <a href="#lessons" class="hover:text-[#4A6043] transition-colors">Lessons</a>
+                <a href="#report-card" class="hover:text-[#4A6043] transition-colors">Report Card</a>
+                <a href="#letter" class="hover:text-[#4A6043] transition-colors">Letter</a>
+                <a href="#surprise" class="hover:text-[#4A6043] transition-colors">Surprise 🎁</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / WELCOME CLASSROOM SECTION -->
+    <section id="hero" class="min-h-screen pt-24 pb-16 px-4 flex flex-col items-center justify-center relative overflow-hidden">
+        
+        <!-- Decorative Hanging Vines & Classroom Foliage -->
+        <div class="absolute top-12 left-4 md:left-12 opacity-80 text-[#4A6043] pointer-events-none animate-float">
+            <i class="fa-solid fa-seedling text-4xl md:text-6xl"></i>
+        </div>
+        <div class="absolute top-16 right-4 md:right-12 opacity-80 text-[#789270] pointer-events-none animate-float" style="animation-delay: 1.5s;">
+            <i class="fa-solid fa-leaf text-4xl md:text-5xl"></i>
+        </div>
+
+        <!-- Top Hanging Classroom Board -->
+        <div class="relative mb-6 max-w-lg w-full text-center">
+            <div class="flex justify-between px-16 -mb-3 z-0">
+                <div class="w-1 bg-[#8C5A41] h-8"></div>
+                <div class="w-1 bg-[#8C5A41] h-8"></div>
+            </div>
+            <div class="chalkboard-bg rounded-xl p-4 md:p-6 text-center text-[#F9F5EA] relative z-10">
+                <div class="border border-dashed border-[#789270]/50 p-3 rounded-lg">
+                    <p class="font-handwriting text-2xl md:text-3xl text-amber-200 mb-1">Welcome, Dear Teacher! 🍎✨</p>
+                    <p class="text-xs md:text-sm font-light text-slate-200 tracking-wide"> Because Great Teachers Deserve More Than Just a Thank You. ❤️</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Title Header Block -->
+        <div class="text-center max-w-3xl mx-auto z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DF9B9B]/20 text-[#8C5A41] text-xs md:text-sm font-semibold mb-4 border border-[#DF9B9B]/40">
+                <i class="fa-solid fa-heart text-[#DF9B9B]"></i>
+                A Little Gift From Your Student, Hafsa Rana
+            </div>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-[#4A6043] font-serifHeading mb-3 tracking-tight">
+                
+                <span class="font-handwriting text-5xl md:text-7xl font-normal text-[#8C5A41]">Happy Teacher's Day</span>
+            </h1>
+
+            <!-- Green Banner -->
+            <div class="inline-block bg-[#4A6043] text-[#F9F5EA] px-6 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase shadow-md my-3 border border-[#789270]">
+                Created With Respect, Gratitude & Appreciation 🎓 
+            </div>
+
+            <p class="text-base md:text-xl text-[#6B3E26] mt-4 font-serifHeading italic">
+                Not just a surprise. ♥ <br class="sm:hidden"/>
+            A small token of gratitude, <span class="underline decoration-[#DF9B9B] decoration-2">created especially for you.</span>. ♥
+            </p>
+
+            <!-- Call to Action Button -->
+            <div class="mt-8">
+                <a href="#teachers" class="inline-flex items-center gap-3 bg-[#4A6043] text-[#F9F5EA] px-8 py-4 rounded-full text-base font-bold shadow-xl hover:bg-[#3A4F35] transition-all transform hover:scale-105 border-2 border-[#789270]">
+                    <span>Explore Your Surprise ✨</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Shelf Display Cards -->
+        <div class="max-w-5xl w-full mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
+            <div class="paper-sheet rounded-xl p-4 text-center border border-[#8C5A41]/20 shadow-sm">
+                <div class="text-2xl text-[#4A6043] mb-1"><i class="fa-solid fa-door-open"></i></div>
+                <p class="text-xs font-bold text-[#4A6043]">Interactive Classroom</p>
+                <p class="text-[10px] text-[#6B3E26]">Personalized Experience</p>
+            </div>
+            <div class="paper-sheet rounded-xl p-4 text-center border border-[#8C5A41]/20 shadow-sm">
+                <div class="text-2xl text-[#8C5A41] mb-1"><i class="fa-solid fa-clipboard-check"></i></div>
+                <p class="text-xs font-bold text-[#4A6043]">Special Report Card</p>
+                <p class="text-[10px] text-[#6B3E26]">Passed with A+++</p>
+            </div>
+            <div class="paper-sheet rounded-xl p-4 text-center border border-[#8C5A41]/20 shadow-sm">
+                <div class="text-2xl text-[#789270] mb-1"><i class="fa-solid fa-images"></i></div>
+                <p class="text-xs font-bold text-[#4A6043]">Photo Album</p>
+                <p class="text-[10px] text-[#6B3E26]">Precious Memories</p>
+            </div>
+            <div class="paper-sheet rounded-xl p-4 text-center border border-[#8C5A41]/20 shadow-sm">
+                <div class="text-2xl text-[#DF9B9B] mb-1"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <p class="text-xs font-bold text-[#4A6043]">Grateful Letter</p>
+                <p class="text-[10px] text-[#6B3E26]">Signed by Hafsa Rana</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONALIZED TEACHER DEDICATION SECTION -->
+    <section id="teachers" class="py-20 px-4 bg-[#F3EDE0]/60 border-y border-[#8C5A41]/15 scroll-reveal">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Profound Gratitude</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-[#4A6043] font-serifHeading mt-2">Welcome, Amazing Teacher 🌿</h2>
+                <p class="text-[#6B3E26] max-w-2xl mx-auto text-base md:text-lg italic mt-3 font-serifHeading">
+                    "Every teacher teaches something... But the best teachers leave something behind in their students — confidence, courage, kindness and unforgettable memories."
+                </p>
+            </div>
+
+            <!-- Student Dedication Banner -->
+            <div class="paper-sheet rounded-2xl p-6 md:p-10 max-w-3xl mx-auto relative border border-[#789270]/40 shadow-lg">
+                <div class="washi-tape tape-center"></div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                    <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#F9F5EA] shadow-md bg-[#4A6043]/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-graduation-cap text-4xl text-[#4A6043]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#4A6043] font-serifHeading mb-2">Dedicated To My Inspiring Teachers</h3>
+                        <p class="text-sm md:text-base text-[#6B3E26] leading-relaxed mb-4">
+                            Thank you for making learning a continuous joy, for encouraging us when we lacked confidence, and for showing us how to think critically and live kindly.
+                        </p>
+                        <div class="inline-flex items-center gap-2 text-xs md:text-sm font-semibold px-4 py-2 rounded-full bg-[#DF9B9B]/20 text-[#8C5A41] border border-[#DF9B9B]/40">
+                            <i class="fa-solid fa-heart text-[#DF9B9B]"></i>
+                        Made With Deep Respect & Gratitude By Your Student, <strong>Hafsa Rana</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teacher Profiles Grid -->
+            <div class="mt-14">
+                <h3 class="text-2xl font-bold text-[#4A6043] text-center font-serifHeading mb-8">My Wonderful Teachers 🌸</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="paper-sheet p-6 rounded-xl relative transition-transform hover:-translate-y-2">
+                        <div class="washi-tape tape-left"></div>
+                        <div class="w-16 h-16 mx-auto rounded-full bg-[#DF9B9B]/30 flex items-center justify-center mb-4 text-[#8C5A41]">
+                            <i class="fa-solid fa-book text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-[#4A6043] text-center font-serifHeading">Mathematics & Logic</h4>
+                        <p class="text-xs text-center text-[#789270] font-semibold uppercase tracking-wider mb-2">Sir / Ma'am</p>
+                        <p class="text-xs text-[#6B3E26] text-center italic">
+                            "Thank you for simplifying hard concepts and teaching us that every problem has a solution."
+                        </p>
+                    </div>
+
+                    <div class="paper-sheet p-6 rounded-xl relative transition-transform hover:-translate-y-2">
+                        <div class="washi-tape tape-center"></div>
+                        <div class="w-16 h-16 mx-auto rounded-full bg-[#789270]/30 flex items-center justify-center mb-4 text-[#4A6043]">
+                            <i class="fa-solid fa-flask text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-[#4A6043] text-center font-serifHeading">Computer & Software</h4>
+                        <p class="text-xs text-center text-[#789270] font-semibold uppercase tracking-wider mb-2">Sir / Ma'am</p>
+                        <p class="text-xs text-[#6B3E26] text-center italic">
+                            "Thank you for sparking curiosity and encouraging us to ask endless questions about the world."
+                        </p>
+                    </div>
+
+                    <div class="paper-sheet p-6 rounded-xl relative transition-transform hover:-translate-y-2">
+                        <div class="washi-tape tape-right"></div>
+                        <div class="w-16 h-16 mx-auto rounded-full bg-[#E2CAAC] flex items-center justify-center mb-4 text-[#8C5A41]">
+                            <i class="fa-solid fa-feather-pointed text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-[#4A6043] text-center font-serifHeading">Programming & Development</h4>
+                        <p class="text-xs text-center text-[#789270] font-semibold uppercase tracking-wider mb-2">Sir / Ma'am</p>
+                        <p class="text-xs text-[#6B3E26] text-center italic">
+                            "Thank you for helping us express ourselves and for teaching us empathy through stories."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMORY PHOTO GALLERY SECTION -->
+    <section id="gallery" class="py-20 px-4 max-w-6xl mx-auto scroll-reveal">
+        <div class="text-center mb-12">
+            <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Scrapbook Moments</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#4A6043] font-serifHeading mt-2">Memory Photo Gallery 📸</h2>
+            <p class="text-[#6B3E26] text-sm md:text-base max-w-md mx-auto mt-2">
+                Click any polaroid to enlarge and view memory details.
+            </p>
+        </div>
+
+        <!-- Dark Slate Album Container -->
+        <div class="chalkboard-bg rounded-2xl p-6 md:p-10 relative">
+            <div class="text-center mb-8">
+                <span class="font-handwriting text-3xl text-amber-100">Memories ♥</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop', 'Classroom Moments')" class="polaroid-card cursor-pointer -rotate-2">
+                    <div class="aspect-4/3 bg-stone-100 overflow-hidden mb-3 border border-stone-200">
+                        <img src="./img/class.png" alt="Classroom Moments" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#4A6043]">Classroom Moments</p>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop', 'Precious Moments')" class="polaroid-card cursor-pointer rotate-2">
+                    <div class="aspect-4/3 bg-stone-100 overflow-hidden mb-3 border border-stone-200">
+                        <img src="./img/2.png" alt="Precious Moments" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#4A6043]">Precious Moments</p>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop', 'Thank You')" class="polaroid-card cursor-pointer -rotate-1">
+                    <div class="aspect-4/3 bg-stone-100 overflow-hidden mb-3 border border-stone-200">
+                        <img src="./img/4.jfif" alt="Thank You" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#4A6043]">Thank You ♥</p>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=800&auto=format&fit=crop', 'Learning Together')" class="polaroid-card cursor-pointer rotate-3">
+                    <div class="aspect-4/3 bg-stone-100 overflow-hidden mb-3 border border-stone-200">
+                        <img src="./img/5.jpg" alt="Learning Together"  class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#4A6043]">Learning Together</p>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800&auto=format&fit=crop', 'Special Day')" class="polaroid-card cursor-pointer -rotate-2">
+                    <div class="aspect-4/3 bg-stone-100 overflow-hidden mb-3 border border-stone-200">
+                        <img src="./img/3.png" alt="Special Day" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#4A6043]">Proud Moments</p>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop', 'Forever Remembered')" class="polaroid-card cursor-pointer rotate-1">
+                    <div class="aspect-4/3 bg-stone-100 overflow-hidden mb-3 border border-stone-200">
+                        <img src="./img/7.jpg" alt="Forever Remembered" class="w-full h-full object-cover" >
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#4A6043]">Forever Remembered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+        <div class="max-w-2xl w-full bg-white p-4 md:p-6 rounded-2xl shadow-2xl relative" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-3xl hover:text-amber-200">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightboxImg" src="" alt="Enlarged Memory" class="w-full h-auto max-h-[75vh] object-contain rounded-lg">
+            <p id="lightboxCaption" class="font-handwriting text-3xl text-center text-[#4A6043] mt-4"></p>
+        </div>
+    </div>
+
+    <!-- WHAT YOU TAUGHT US SECTION -->
+    <section id="lessons" class="py-20 px-4 bg-[#F3EDE0]/60 border-y border-[#8C5A41]/15 scroll-reveal">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Life Lessons</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-[#4A6043] font-serifHeading mt-2">What You Taught Us 🌿</h2>
+            </div>
+
+            <div class="paper-sheet rounded-2xl p-6 md:p-12 border-2 border-[#E2D7C3] shadow-xl relative">
+                <div class="washi-tape tape-center"></div>
+
+                <div class="text-center mb-8 border-b border-[#8C5A41]/20 pb-4">
+                    <span class="inline-block bg-[#4A6043] text-[#F9F5EA] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                        ▶ Lessons We Will Always Remember ◀
+                    </span>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-[#DF9B9B]/30 flex items-center justify-center text-[#8C5A41] text-xl flex-shrink-0">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#4A6043]">Learn With Curiosity</h3>
+                            <p class="text-sm text-[#6B3E26]">Always ask, explore and keep learning continuously.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-[#DF9B9B]/40 flex items-center justify-center text-[#8C5A41] text-xl flex-shrink-0">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#4A6043]">Be Kind</h3>
+                            <p class="text-sm text-[#6B3E26]">Kindness can make someone's entire day better.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-[#789270]/30 flex items-center justify-center text-[#4A6043] text-xl flex-shrink-0">
+                            <i class="fa-solid fa-mountain"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#4A6043]">Never Give Up</h3>
+                            <p class="text-sm text-[#6B3E26]">Hard things become easier when we keep trying step by step.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-[#E2CAAC] flex items-center justify-center text-[#8C5A41] text-xl flex-shrink-0">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#4A6043]">Keep Growing</h3>
+                            <p class="text-sm text-[#6B3E26]">Every day is another chance to become a better human being.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-3 rounded-lg hover:bg-white/50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-[#DF9B9B]/30 flex items-center justify-center text-[#8C5A41] text-xl flex-shrink-0">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#4A6043]">Believe In Yourself</h3>
+                            <p class="text-sm text-[#6B3E26]">You taught us to trust our own abilities even when times are tough.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEACHER REPORT CARD SECTION -->
+    <section id="report-card" class="py-20 px-4 max-w-2xl mx-auto scroll-reveal">
+        <div class="text-center mb-8">
+            <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Official Evaluation</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#4A6043] font-serifHeading mt-2">Teacher's Report Card 📝</h2>
+        </div>
+
+        <div class="clipboard-board mt-8">
+            <div class="clipboard-clip">
+                <div class="clipboard-clip-inner"></div>
+            </div>
+
+            <div class="bg-[#F9F5EA] rounded-xl p-6 md:p-10 border border-[#E2CAAC] shadow-inner mt-4">
+                <div class="text-center border-b-2 border-dashed border-[#8C5A41]/30 pb-4 mb-6">
+                    <h3 class="font-serifHeading text-2xl font-bold text-[#4A6043]">TEACHER'S ANNUAL REPORT CARD</h3>
+                    <p class="text-xs uppercase text-[#6B3E26] tracking-widest mt-1">Evaluated by Student: Hafsa Rana</p>
+                </div>
+
+                <div class="space-y-4 mb-8">
+                    <div class="flex justify-between items-center border-b border-[#8C5A41]/10 pb-2">
+                        <span class="font-medium text-[#6B3E26]">Motivation & Guidance</span>
+                        <span class="font-bold text-[#4A6043] text-xl tracking-wider opacity-0 grade-badge">A+++</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-[#8C5A41]/10 pb-2">
+                        <span class="font-medium text-[#6B3E26]">Patience & Understanding</span>
+                        <span class="font-bold text-[#4A6043] text-xl tracking-wider opacity-0 grade-badge">A+++</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-[#8C5A41]/10 pb-2">
+                        <span class="font-medium text-[#6B3E26]">Kindness & Empathy</span>
+                        <span class="font-bold text-[#4A6043] text-xl tracking-wider opacity-0 grade-badge">A+++</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-[#8C5A41]/10 pb-2">
+                        <span class="font-medium text-[#6B3E26]">Support & Encouragement</span>
+                        <span class="font-bold text-[#4A6043] text-xl tracking-wider opacity-0 grade-badge">A+++</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-[#8C5A41]/10 pb-2">
+                        <span class="font-medium text-[#6B3E26]">Inspiration & Impact</span>
+                        <span class="font-bold text-[#4A6043] text-xl tracking-wider opacity-0 grade-badge">A+++</span>
+                    </div>
+                </div>
+
+                <div class="bg-[#F7D6D8]/60 border border-[#DF9B9B] rounded-xl p-4 text-center mb-6">
+                    <p class="text-xs font-bold text-[#8C5A41] uppercase tracking-wider mb-1">Final Result</p>
+                    <p class="text-2xl md:text-3xl font-bold text-[#4A6043] font-serifHeading">EXCEPTIONAL TEACHER ⭐</p>
+                </div>
+
+                <p class="font-handwriting text-2xl md:text-3xl text-center text-[#4A6043] leading-tight">
+                    "Passed with flying colors — and earned a permanent place in our memories."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- A LETTER FOR MY TEACHER SECTION -->
+    <section id="letter" class="py-20 px-4 bg-[#F3EDE0]/60 border-y border-[#8C5A41]/15 scroll-reveal">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Open Your Envelope</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#4A6043] font-serifHeading mt-2 mb-10">A Letter For You 💌</h2>
+
+            <div class="max-w-xl mx-auto relative">
+                <!-- Closed Kraft Envelope -->
+                <div id="envelopeClosed" onclick="openLetterEnvelope()" class="cursor-pointer bg-[#E2CAAC] border-2 border-[#CBAC8B] rounded-2xl p-8 shadow-2xl relative min-h-[240px] flex flex-col items-center justify-center transition-all hover:scale-105">
+                    
+                    <div class="wax-seal-btn w-16 h-16 text-xs font-bold mb-3 tracking-widest uppercase">
+                        Click
+                    </div>
+
+                    <div class="bg-[#4A6043] text-[#F9F5EA] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                        ♥ A LETTER FOR YOU ♥
+                    </div>
+
+                    <p class="font-serifHeading text-2xl text-[#6B3E26] font-bold">Dear Teacher,</p>
+                    <p class="text-xs text-[#8C5A41] mt-1 font-medium">Click the button to open your letter</p>
+                </div>
+
+                <!-- Opened Letter Paper -->
+                <div id="letterOpened" class="hidden paper-sheet p-6 md:p-10 rounded-2xl text-left border border-[#789270]/40 shadow-2xl">
+                    <div class="border-b border-[#8C5A41]/20 pb-4 mb-6 flex justify-between items-center">
+                        <span class="bg-[#4A6043] text-[#F9F5EA] px-3 py-1 rounded-full text-xs font-bold">A LETTER FOR YOU ♥</span>
+                        <span class="text-xs font-semibold text-[#8C5A41]">Written with gratitude</span>
+                    </div>
+
+                    <p class="font-handwriting text-3xl text-[#4A6043] mb-4">Dear Teacher,</p>
+                    
+                    <div class="space-y-4 text-sm md:text-base text-[#6B3E26] font-serifHeading leading-relaxed">
+                        <p>Thank you for being such an amazing part of our journey.</p>
+                        <p>Thank you for sharing your knowledge in a way that makes everything easier to understand.</p>
+                        <p>Thank you for your patience, kindness and support, every single day.</p>
+                        <p class="italic font-bold text-[#4A6043]">You teach more than lessons, you teach life.</p>
+                        <p>I feel truly fortunate to be your student. Your belief in us gives us courage to dream bigger and work harder.</p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-[#8C5A41]/20 text-right">
+                        <p class="font-handwriting text-3xl text-[#4A6043]">With lots of Respect and Gratitude,</p>
+                        <p class="font-bold text-[#8C5A41] text-lg font-serifHeading mt-1">Your Student, Hafsa Rana 🌸</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEACHER WALL OF APPRECIATION -->
+    <section class="py-20 px-4 max-w-5xl mx-auto scroll-reveal">
+        <div class="text-center mb-12">
+            <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Classroom Board</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#4A6043] font-serifHeading mt-2">Words From Your Student 🌸</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="paper-sheet p-5 rounded-lg -rotate-2 bg-[#F7D6D8]/40 border border-[#DF9B9B]/40 relative">
+                <div class="washi-tape tape-center"></div>
+                <p class="font-handwriting text-2xl text-[#4A6043] mt-2">"Thank you for believing in us."</p>
+                <p class="text-[10px] text-right text-[#8C5A41] font-bold mt-2">— Hafsa Rana</p>
+            </div>
+            <div class="paper-sheet p-5 rounded-lg rotate-2 bg-[#DF9B9B]/20 border border-[#DF9B9B]/40 relative">
+                <div class="washi-tape tape-center"></div>
+                <p class="font-handwriting text-2xl text-[#4A6043] mt-2">"You made difficult things feel possible."</p>
+                <p class="text-[10px] text-right text-[#8C5A41] font-bold mt-2">— Hafsa Rana</p>
+            </div>
+            <div class="paper-sheet p-5 rounded-lg -rotate-1 bg-[#789270]/20 border border-[#789270]/40 relative">
+                <div class="washi-tape tape-center"></div>
+                <p class="font-handwriting text-2xl text-[#4A6043] mt-2">"Your words gave us confidence."</p>
+                <p class="text-[10px] text-right text-[#8C5A41] font-bold mt-2">— Hafsa Rana</p>
+            </div>
+            <div class="paper-sheet p-5 rounded-lg rotate-1 bg-[#F9F5EA] border border-[#E2CAAC] relative">
+                <div class="washi-tape tape-center"></div>
+                <p class="font-handwriting text-2xl text-[#4A6043] mt-2">"We will remember your lessons forever."</p>
+                <p class="text-[10px] text-right text-[#8C5A41] font-bold mt-2">— Hafsa Rana</p>
+            </div>
+            <div class="paper-sheet p-5 rounded-lg -rotate-2 bg-[#F7D6D8]/50 border border-[#DF9B9B]/40 relative">
+                <div class="washi-tape tape-center"></div>
+                <p class="font-handwriting text-2xl text-[#4A6043] mt-2">"Thank you for making every class special."</p>
+                <p class="text-[10px] text-right text-[#8C5A41] font-bold mt-2">— Hafsa Rana</p>
+            </div>
+            <div class="paper-sheet p-5 rounded-lg rotate-3 bg-[#E2CAAC]/40 border border-[#CBAC8B] relative">
+                <div class="washi-tape tape-center"></div>
+                <p class="font-handwriting text-2xl text-[#4A6043] mt-2">"Always inspired by your kindness!"</p>
+                <p class="text-[10px] text-right text-[#8C5A41] font-bold mt-2">— Hafsa Rana</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL SURPRISE SECTION -->
+    <section id="surprise" class="py-20 px-4 bg-[#4A6043] text-[#F9F5EA] scroll-reveal relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <span class="text-[#789270] font-bold uppercase tracking-widest text-xs">Final Celebration</span>
+            <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4 font-serifHeading text-[#F9F5EA]">Before You Go... There's One More Surprise 🎁</h2>
+            <p class="text-slate-200 text-sm md:text-base max-w-md mx-auto mb-8">
+                You've opened the Surprise, read the report card, and opened the letter... Click below for your final gift!
+            </p>
+
+            <button id="surpriseBtn" onclick="triggerSurprise()" class="bg-[#DF9B9B] text-[#4A3A2C] px-8 py-4 rounded-full text-base font-bold shadow-2xl hover:bg-[#E8B4B8] transition-all transform hover:scale-105 border-2 border-[#F7D6D8]">
+                Open My Surprise 🎁
+            </button>
+
+            <!-- Revealed Surprise Message -->
+            <div id="surpriseContent" class="hidden paper-sheet p-8 md:p-12 rounded-2xl text-[#4A3A2C] mt-8 max-w-2xl mx-auto shadow-2xl border-4 border-[#DF9B9B] text-left">
+                <p class="font-serifHeading text-xl md:text-2xl text-[#4A6043] font-bold mb-4">
+                    You didn't just teach us subjects.
+                </p>
+                <p class="text-sm md:text-base text-[#6B3E26] leading-relaxed mb-6 font-serifHeading">
+                    You taught us to believe in ourselves.<br>
+                    You taught us to try again.<br>
+                    You taught us how to grow with confidence.<br><br>
+                    <span class="font-bold text-[#4A6043]">For that, you will always be remembered and deeply cherished. ❤️</span>
+                </p>
+                <div class="border-t border-[#8C5A41]/20 pt-6 text-center">
+                    <h3 class="font-serifHeading text-3xl md:text-5xl font-bold text-[#4A6043] tracking-wide">
+                        HAPPY TEACHER'S DAY! 🌸
+                    </h3>
+                    <p class="font-handwriting text-2xl text-[#8C5A41] mt-3">With respect and affection, Hafsa Rana</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 px-4 text-center text-[#6B3E26]">
+        <div class="max-w-2xl mx-auto space-y-4">
+            <h3 class="font-serifHeading text-2xl md:text-3xl font-bold text-[#4A6043]">
+                To Every Teacher Who Made A Difference...
+            </h3>
+            <p class="text-xs md:text-sm leading-relaxed">
+                Some lessons stay with us forever. Thank you for guiding us with Kindness and endless support.
+            </p>
+            <div class="pt-6 font-handwriting text-3xl text-[#4A6043]">
+                With Deep Respect & Gratitude,<br>
+                <span class="font-bold">Your Student, Hafsa Rana ❤</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Ambient Piano Synthesizer Audio Toggle (Web Audio API)
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let pianoInterval = null;
+
+        function toggleMusic() {
+            const btnText = document.getElementById('musicStatusText');
+            const icon = document.getElementById('musicIcon');
+
+            if (!isMusicPlaying) {
+                startPianoSynth();
+                isMusicPlaying = true;
+                btnText.innerText = "Background Music: ON";
+                icon.classList.add('animate-spin');
+            } else {
+                stopPianoSynth();
+                isMusicPlaying = false;
+                btnText.innerText = "Background Music: OFF";
+                icon.classList.remove('animate-spin');
+            }
+        }
+
+        function startPianoSynth() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            const scaleNotes = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23, 392.00];
+            let noteIndex = 0;
+
+            pianoInterval = setInterval(() => {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(scaleNotes[noteIndex % scaleNotes.length], audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.4);
+
+                noteIndex++;
+            }, 750);
+        }
+
+        function stopPianoSynth() {
+            if (pianoInterval) clearInterval(pianoInterval);
+        }
+
+        // 2. Polaroid Lightbox Modal Functions
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').innerText = caption;
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.getElementById('lightbox').classList.add('flex');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.getElementById('lightbox').classList.remove('flex');
+        }
+
+        // 3. Open Kraft Envelope Letter
+        function openLetterEnvelope() {
+            document.getElementById('envelopeClosed').classList.add('hidden');
+            document.getElementById('letterOpened').classList.remove('hidden');
+        }
+
+        // 4. Surprise Box & Canvas Confetti FX
+        function triggerSurprise() {
+            document.getElementById('surpriseBtn').classList.add('hidden');
+            document.getElementById('surpriseContent').classList.remove('hidden');
+
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 130,
+                    spread: 85,
+                    origin: { y: 0.6 },
+                    colors: ['#4A6043', '#DF9B9B', '#E2CAAC', '#F7D6D8']
+                });
+            }
+        }
+
+        // 5. Scroll Reveal & Report Card Grade Stagger Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+
+                        if (entry.target.id === 'report-card') {
+                            const badges = document.querySelectorAll('.grade-badge');
+                            badges.forEach((badge, idx) => {
+                                setTimeout(() => {
+                                    badge.classList.remove('opacity-0');
+                                    badge.classList.add('transition-opacity', 'duration-500');
+                                }, idx * 220);
+                            });
+                        }
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
